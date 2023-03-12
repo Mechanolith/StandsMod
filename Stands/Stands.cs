@@ -25,6 +25,8 @@ namespace Stands
         private const string ModName = "Stands";
         private const string ModId = "com.Mechanolith.rounds.Stands";
 
+        private const bool useDebugs = true;
+
 
         void Awake()
         {
@@ -41,9 +43,9 @@ namespace Stands
 
         public static void Debug(string message)
         {
-            if (UnityEngine.Debug.isDebugBuild)
+            if (useDebugs)
             {
-                UnityEngine.Debug.Log(message);
+                UnityEngine.Debug.Log($"[{ModInitials}] {message}");
             }
         }
     }
