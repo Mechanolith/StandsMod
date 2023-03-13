@@ -9,8 +9,8 @@ namespace Stands.Cards
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
             Stands.Debug($"[{Stands.ModInitials}][Card] {GetTitle()} has been setup.");
-            statModifiers.movementSpeed = 1.75f;
-            statModifiers.health = 0.5f;
+            statModifiers.movementSpeed = 1.5f;
+            statModifiers.health = 0.75f;
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
@@ -45,14 +45,14 @@ namespace Stands.Cards
                 {
                     positive = true,
                     stat = "Move Speed",
-                    amount = "+75%",
+                    amount = "+50%",
                     simepleAmount = CardInfoStat.SimpleAmount.aLotOf
                 },
                 new CardInfoStat()
                 {
                     positive = false,
                     stat = "Health",
-                    amount = "-50%",
+                    amount = "-25%",
                     simepleAmount = CardInfoStat.SimpleAmount.lower
                 }
             };
