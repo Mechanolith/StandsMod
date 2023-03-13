@@ -42,6 +42,7 @@ namespace Stands
             CustomCard.BuildCard<SilverChariot>();
             CustomCard.BuildCard<ChariotTechnique>();
             CustomCard.BuildCard<StarFinger>();
+            CustomCard.BuildCard<ArmourOff>();
         }
 
         public static void Debug(string message)
