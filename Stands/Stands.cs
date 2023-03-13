@@ -41,6 +41,7 @@ namespace Stands
             CustomCard.BuildCard<Hamon>();
             CustomCard.BuildCard<SilverChariot>();
             CustomCard.BuildCard<ChariotTechnique>();
+            CustomCard.BuildCard<StarFinger>();
         }
 
         public static void Debug(string message)
