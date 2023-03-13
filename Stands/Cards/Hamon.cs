@@ -10,9 +10,8 @@ namespace Stands.Cards
         {
             //Edits values on card itself, which are then applied to the player in `ApplyCardStats`
             Stands.Debug($"[Card] {GetTitle()} has been setup.");
-            //gun.damage = 2f;
-            //gun.projectileSpeed = 2f;
             gun.reloadTime = 1.5f;
+            gun.projectileColor = Color.yellow;
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
