@@ -20,6 +20,9 @@
     <Reference Include="ModdingUtils">
       <HintPath>C:\Users\jkusk\AppData\Roaming\r2modmanPlus-local\ROUNDS\profiles\Default\BepInEx\plugins\Pykess-ModdingUtils\ModdingUtils.dll</HintPath>
     </Reference>
+    <Reference Include="SonigonAudioEngine.Runtime">
+      <HintPath>Q:\Steam\SteamApps\common\ROUNDS\Rounds_Data\Managed\SonigonAudioEngine.Runtime.dll</HintPath>
+    </Reference>
     <Reference Include="UnboundLib">
       <HintPath>C:\Users\jkusk\AppData\Roaming\r2modmanPlus-local\ROUNDS\profiles\Default\BepInEx\plugins\willis81808-UnboundLib\UnboundLib.dll</HintPath>
     </Reference>
@@ -28,6 +31,9 @@
     </Reference>
     <Reference Include="UnityEngine.CoreModule">
       <HintPath>Q:\Steam\SteamApps\common\ROUNDS\Rounds_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ParticleSystemModule">
+      <HintPath>Q:\Steam\SteamApps\common\ROUNDS\Rounds_Data\Managed\UnityEngine.ParticleSystemModule.dll</HintPath>
     </Reference>
   </ItemGroup>
 

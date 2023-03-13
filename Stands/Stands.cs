@@ -40,6 +40,7 @@ namespace Stands
         {
             CustomCard.BuildCard<Hamon>();
             CustomCard.BuildCard<SilverChariot>();
+            CustomCard.BuildCard<ChariotTechnique>();
         }
 
         public static void Debug(string message)
