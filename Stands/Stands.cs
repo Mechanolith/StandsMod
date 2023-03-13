@@ -39,6 +39,7 @@ namespace Stands
         void Start()
         {
             CustomCard.BuildCard<Hamon>();
+            CustomCard.BuildCard<SilverChariot>();
         }
 
         public static void Debug(string message)
