@@ -10,9 +10,10 @@ namespace Stands.Cards
 {
     class HamonMono : CounterReversibleEffect
     {
-        public GunAmmo gunAmmo;
-        private Gun baseGun;
-        private float maxDamageBuff = 2f;
+        public GunAmmo GunAmmo;
+        public int Copies = 1;
+
+        private float maxDamageBuff = 1.5f;
         private float maxVelocityBuff = 2f;
 
         public override void OnApply()
@@ -33,10 +34,10 @@ namespace Stands.Cards
 
         public override void UpdateEffects()
         {
-            float ammoMultiplier = (int)gunAmmo.GetFieldValue("currentAmmo") / (float)gunAmmo.maxAmmo;
+            float ammoMultiplier = (int)GunAmmo.GetFieldValue("currentAmmo") / (float)GunAmmo.maxAmmo;
             //Stands.Debug($"[HamonMono] {(int)gunAmmo.GetFieldValue("currentAmmo")}/{(float)gunAmmo.maxAmmo} = {ammoMultiplier}");
-            float damageBuff = maxDamageBuff * ammoMultiplier;
-            float velocityBuff = maxVelocityBuff * ammoMultiplier;
+            float damageBuff = maxDamageBuff * ammoMultiplier * Copies;
+            float velocityBuff = maxVelocityBuff * ammoMultiplier * Copies;
 
             gunStatModifier.damage_mult = damageBuff;
             gunStatModifier.projectileSpeed_mult = velocityBuff;

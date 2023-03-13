@@ -13,6 +13,8 @@ namespace Stands.Cards
 {
     class ChariotTechniqueMono : MonoBehaviour
 	{
+		public int Copies = 1;
+
 		CharacterData data;
 		Player player;
 		Block block;
@@ -34,6 +36,8 @@ namespace Stands.Cards
 
 		bool active;
 		bool alreadyActivated;
+
+		float originalLifetime;
 
 		void Start()
 		{
@@ -72,7 +76,11 @@ namespace Stands.Cards
 			{
 				if(trigger != BlockTrigger.BlockTriggerType.None && !active)
                 {
-					gun.reflects += 1;
+					originalLifetime = gun.destroyBulletAfter;
+
+					gun.reflects += Copies;
+					gun.destroyBulletAfter = 0;
+
 					active = true;
                 }
 			};
@@ -85,7 +93,10 @@ namespace Stands.Cards
 				SoundManager.Instance.PlayAtPosition(this.soundShoot, SoundManager.Instance.GetTransform(), base.transform);
 				AddBehvaiourToProjectile(projectile, screenEdgeToSpawn);
 				AddBehvaiourToProjectile(projectile, targetBounceToSpawn);
-				gun.reflects -= 1;
+				
+				gun.reflects -= Copies;
+				gun.destroyBulletAfter = originalLifetime;
+
 				active = false;
 			}
         }

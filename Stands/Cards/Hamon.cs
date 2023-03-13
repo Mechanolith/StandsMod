@@ -17,11 +17,16 @@ namespace Stands.Cards
         {
             //Edits values on player when card is selected
             Stands.Debug($"[Card] {GetTitle()} has been added to player {player.playerID}.");
-            bool newCard = player.gameObject.GetComponent<HamonMono>() == null;
-            if (newCard) 
+            HamonMono cardMono = player.gameObject.GetComponent<HamonMono>();
+
+            if (cardMono == null) 
             {
                 HamonMono hamon = player.gameObject.AddComponent<HamonMono>();
-                hamon.gunAmmo = gunAmmo;
+                hamon.GunAmmo = gunAmmo;
+            }
+            else
+            {
+                ++cardMono.Copies;
             }
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
@@ -29,10 +34,17 @@ namespace Stands.Cards
             //Run when the card is removed from the player
             Stands.Debug($"[Card] {GetTitle()} has been removed from player {player.playerID}.");
 
-            bool lastCard = player.gameObject.GetComponent<HamonMono>() != null && CardCount.Amount(player, "Hamon") == 1;
-            if (lastCard)
+            HamonMono cardMono = player.gameObject.GetComponent<HamonMono>();
+
+            if (cardMono != null) 
             {
-                Destroy(player.gameObject.GetComponent<HamonMono>());
+                --cardMono.Copies;
+
+                bool lastCard = CardCount.Amount(player, "Hamon") == 1;
+                if (lastCard)
+                {
+                    Destroy(player.gameObject.GetComponent<HamonMono>());
+                }
             }
         }
 

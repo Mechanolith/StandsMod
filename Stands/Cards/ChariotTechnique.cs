@@ -5,7 +5,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Reflection;
 using UnboundLib.Utils;
-
+using Stands.Utility;
 
 namespace Stands.Cards
 {
@@ -20,13 +20,33 @@ namespace Stands.Cards
         {
             //Edits values on player when card is selected
             Stands.Debug($"[{Stands.ModInitials}][Card] {GetTitle()} has been added to player {player.playerID}.");
-            player.gameObject.AddComponent<ChariotTechniqueMono>();
+            ChariotTechniqueMono cardMono = player.gameObject.GetComponent<ChariotTechniqueMono>();
+            if (cardMono == null)
+            {
+                player.gameObject.AddComponent<ChariotTechniqueMono>();
+            }
+            else
+            {
+                ++cardMono.Copies;
+            }
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
             //Run when the card is removed from the player
             Stands.Debug($"[{Stands.ModInitials}][Card] {GetTitle()} has been removed from player {player.playerID}.");
-            Destroy(player.gameObject.GetComponent<ChariotTechniqueMono>());
+            ChariotTechniqueMono cardMono = player.gameObject.GetComponent<ChariotTechniqueMono>();
+
+            if (cardMono != null)
+            {
+                --cardMono.Copies;
+
+                bool lastCard = CardCount.Amount(player, "Chariot Technique") == 1;
+
+                if (lastCard)
+                {
+                    Destroy(player.gameObject.GetComponent<ChariotTechniqueMono>());
+                }
+            }
         }
 
         protected override string GetTitle()
@@ -35,7 +55,7 @@ namespace Stands.Cards
         }
         protected override string GetDescription()
         {
-            return "Your next shot after blocking gains:";
+            return "Your next shot after blocking has:";
         }
         protected override GameObject GetCardArt()
         {
