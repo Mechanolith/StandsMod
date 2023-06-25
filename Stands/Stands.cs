@@ -43,6 +43,7 @@ namespace Stands
             CustomCard.BuildCard<GratefulDead>();
             CustomCard.BuildCard<Hamon>();
             CustomCard.BuildCard<LittleFeet>();
+            CustomCard.BuildCard<Sethan>();
             CustomCard.BuildCard<SilverChariot>();
             CustomCard.BuildCard<SpiceGirl>();
             CustomCard.BuildCard<StarFinger>();
