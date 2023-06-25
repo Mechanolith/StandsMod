@@ -77,6 +77,13 @@ namespace Stands.Cards
                     amount = "+1",
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 },
+                new CardInfoStat()
+                {
+                    positive = true,
+                    stat = "Lifetime",
+                    amount = "Unlimited",
+                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned
+                },
             };
         }
         protected override CardThemeColor.CardThemeColorType GetTheme()
