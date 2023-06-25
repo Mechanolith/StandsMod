@@ -45,6 +45,7 @@ namespace Stands
             CustomCard.BuildCard<SpiceGirl>();
             CustomCard.BuildCard<StarFinger>();
             CustomCard.BuildCard<StoneMask>();
+            CustomCard.BuildCard<TowerOfGray>();
         }
 
         public static void Debug(string message)
