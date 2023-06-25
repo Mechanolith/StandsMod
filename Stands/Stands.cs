@@ -41,6 +41,7 @@ namespace Stands
             CustomCard.BuildCard<ArmourOff>();
             CustomCard.BuildCard<ChariotTechnique>();
             CustomCard.BuildCard<Hamon>();
+            CustomCard.BuildCard<LittleFeet>();
             CustomCard.BuildCard<SilverChariot>();
             CustomCard.BuildCard<SpiceGirl>();
             CustomCard.BuildCard<StarFinger>();
