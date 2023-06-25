@@ -48,6 +48,7 @@ namespace Stands
             CustomCard.BuildCard<StarFinger>();
             CustomCard.BuildCard<StoneMask>();
             CustomCard.BuildCard<TowerOfGray>();
+            CustomCard.BuildCard<YellowTemperance>();
         }
 
         public static void Debug(string message)
