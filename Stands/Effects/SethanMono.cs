@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using UnboundLib.GameModes;
+using System.Collections;
 
 namespace Stands.Effects
 {
@@ -8,7 +10,7 @@ namespace Stands.Effects
         Player source;
         float tickRate = 0.5f;
         float timer;
-        float effectRadius = 3f;
+        float effectRadius = 6f;
         float effectRadiusSquared;
         SethanEffectMono effect;
         SethanColorMono effectColor;
@@ -26,6 +28,7 @@ namespace Stands.Effects
             effectColor = gameObject.AddComponent<SethanColorMono>();
 
             PlayerManager.instance.AddPlayerDiedAction(OnPlayerDied);
+            GameModeManager.AddHook(GameModeHooks.HookRoundEnd, (gm) => DoReset());
 
             var monos = GetComponentsInChildren<SethanEffectMono>();
             Stands.Debug($"[Sethan] Mono count: {monos.Length}");
@@ -35,9 +38,20 @@ namespace Stands.Effects
         {
             if (_player == target)
             {
-                effect.Reset();
-                effectColor.Reset();
+                Reset();
             }
+        }
+
+        IEnumerator DoReset()
+        {
+            Reset();
+            yield break;
+        }
+
+        void Reset()
+        {
+            effect.Reset();
+            effectColor.Reset();
         }
 
         void Update()

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
 using UnboundLib;
+using System.Collections;
+using UnboundLib.GameModes;
 
 namespace Stands.Effects
 {
@@ -12,7 +14,7 @@ namespace Stands.Effects
         Player source;
         float tickRate = 0.5f;
         float timer;
-        float effectRadius = 5f;
+        float effectRadius = 10f;
         float effectRadiusSquared;
         GratefulDeadEffectMono effect;
         GratefulDeadColorMono effectColor;
@@ -30,6 +32,7 @@ namespace Stands.Effects
             effectColor = gameObject.AddComponent<GratefulDeadColorMono>();
 
             PlayerManager.instance.AddPlayerDiedAction(OnPlayerDied);
+            GameModeManager.AddHook(GameModeHooks.HookRoundEnd, (gm) => DoReset());
 
             var monos = GetComponentsInChildren<GratefulDeadEffectMono>();
             Stands.Debug($"[GratefulDead] Mono count: {monos.Length}");
@@ -39,9 +42,20 @@ namespace Stands.Effects
         {
             if (_player == target)
             {
-                effect.Reset();
-                effectColor.Reset();
+                Reset();
             }
+        }
+
+        IEnumerator DoReset()
+        {
+            Reset();
+            yield break;
+        }
+
+        void Reset()
+        {
+            effect.Reset();
+            effectColor.Reset();
         }
 
         void Update()

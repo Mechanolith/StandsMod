@@ -2,6 +2,7 @@
 using UnboundLib.Cards;
 using UnityEngine;
 using Stands.Effects;
+using UnboundLib;
 
 
 namespace Stands.Cards
@@ -16,15 +17,7 @@ namespace Stands.Cards
         {
             Stands.Debug($"[{Stands.ModInitials}][Card] {GetTitle()} has been added to player {player.playerID}.");
 
-            StarFingerMono cardMono = player.gameObject.GetComponent<StarFingerMono>();
-            if (cardMono == null)
-            {
-                player.gameObject.AddComponent<StarFingerMono>();
-            }
-            else
-            {
-                ++cardMono.Copies;
-            }
+            ExtensionMethods.GetOrAddComponent<StarFingerMono>(player.gameObject, false);
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
@@ -32,7 +25,7 @@ namespace Stands.Cards
 
             StarFingerMono cardMono = player.gameObject.GetComponent<StarFingerMono>();
 
-            if (cardMono != null) 
+            if (cardMono != null)
             {
                 --cardMono.Copies;
 
@@ -41,6 +34,7 @@ namespace Stands.Cards
                 if (lastCard)
                 {
                     Destroy(player.gameObject.GetComponent<StarFingerMono>());
+                    Destroy(player.gameObject.GetComponent<StarFingerEffectMono>());
                 }
             }
         }

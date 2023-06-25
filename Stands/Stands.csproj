@@ -20,6 +20,9 @@
     <Reference Include="ModdingUtils">
       <HintPath>C:\Users\jkusk\AppData\Roaming\r2modmanPlus-local\ROUNDS\profiles\Default\BepInEx\plugins\Pykess-ModdingUtils\ModdingUtils.dll</HintPath>
     </Reference>
+    <Reference Include="ModsPlus">
+      <HintPath>C:\Users\jkusk\AppData\Roaming\r2modmanPlus-local\ROUNDS\profiles\Default\BepInEx\plugins\willis81808-ModsPlus\ModsPlus.dll</HintPath>
+    </Reference>
     <Reference Include="PCE">
       <HintPath>C:\Users\jkusk\AppData\Roaming\r2modmanPlus-local\ROUNDS\profiles\Default\BepInEx\plugins\Pykess-PCE\PCE.dll</HintPath>
     </Reference>

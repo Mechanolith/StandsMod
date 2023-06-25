@@ -8,6 +8,7 @@ using System.Linq;
 using System.Reflection;
 using UnboundLib.Utils;
 using Object = UnityEngine.Object;
+using UnboundLib;
 
 namespace Stands.Effects
 {
@@ -34,12 +35,7 @@ namespace Stands.Effects
 		bool active;
 		bool alreadyActivated;
 
-		float originalSpeed;
-		float originalSpread;
-		float originalSize;
-		int originalReflects;
-		float originalGravity;
-		Color originalColor;
+		StarFingerEffectMono effect;
 
 
 		void Start()
@@ -61,6 +57,9 @@ namespace Stands.Effects
 			block.delayOtherActions = true;
 			gun.ShootPojectileAction = (Action<GameObject>)Delegate.Combine(gun.ShootPojectileAction, new Action<GameObject>(Attack));
 			active = false;
+
+			effect = ExtensionMethods.GetOrAddComponent<StarFingerEffectMono>(gameObject, false);
+			effect.Init();
 		}
 
 		public Action<BlockTrigger.BlockTriggerType> GetDoBlockAction(Player player, Block block, CharacterData data)
@@ -69,19 +68,7 @@ namespace Stands.Effects
 			{
 				if(trigger != BlockTrigger.BlockTriggerType.None && !active)
                 {
-					originalSpeed = gun.projectileSpeed;
-					originalSpread = gun.spread;
-					originalSize = gun.projectileSize;
-					originalReflects = gun.reflects;
-					originalGravity = gun.gravity;
-					originalColor = gun.projectileColor;
-
-					gun.projectileSpeed *= 5f * Copies;
-					gun.spread = 0;
-					gun.projectileSize *= 0.25f * Copies;
-					gun.reflects = 0;
-					gun.gravity = 0;
-					gun.projectileColor = new Color(1f, 0f, 1f, gun.projectileColor.a);
+					effect.ApplyModifiers();
 
 					active = true;
                 }
@@ -94,12 +81,7 @@ namespace Stands.Effects
 			{
 				SoundManager.Instance.PlayAtPosition(this.soundShoot, SoundManager.Instance.GetTransform(), base.transform);
 
-				gun.projectileSpeed = originalSpeed;
-				gun.spread = originalSpread;
-				gun.projectileSize = originalSize;
-				gun.reflects = originalReflects;
-				gun.gravity = originalGravity;
-				gun.projectileColor = originalColor;
+				effect.ClearModifiers();
 
 				active = false;
 			}

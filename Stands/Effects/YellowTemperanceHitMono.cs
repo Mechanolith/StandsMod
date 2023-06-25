@@ -24,7 +24,7 @@ namespace Stands.Effects
 
             YellowTempereanceEffectMono effectMono = ExtensionMethods.GetOrAddComponent<YellowTempereanceEffectMono>(hit.transform.gameObject, false);
             ProjectileHit projectileComponent = GetComponentInParent<ProjectileHit>();
-            effectMono.OnHit(projectileComponent.damage);
+            effectMono.OnHit(projectileComponent.damage, hitPlayer.data.maxHealth);
             hitPlayer.data.healthHandler.Heal(projectileComponent.damage);
 
             return HasToReturn.canContinue;

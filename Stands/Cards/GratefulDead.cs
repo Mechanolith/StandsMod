@@ -58,7 +58,7 @@ namespace Stands.Cards
                 {
                     positive = true,
                     stat = "Move Speed Drain",
-                    amount = "10% per second you goddamn nerd",
+                    amount = "5% per second you goddamn nerd",
                     simepleAmount = CardInfoStat.SimpleAmount.aLittleBitOf
                 },
                 //new CardInfoStat()
