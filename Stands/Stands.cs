@@ -40,6 +40,7 @@ namespace Stands
         {
             CustomCard.BuildCard<ArmourOff>();
             CustomCard.BuildCard<ChariotTechnique>();
+            CustomCard.BuildCard<GratefulDead>();
             CustomCard.BuildCard<Hamon>();
             CustomCard.BuildCard<LittleFeet>();
             CustomCard.BuildCard<SilverChariot>();
