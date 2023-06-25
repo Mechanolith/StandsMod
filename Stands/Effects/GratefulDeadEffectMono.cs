@@ -12,5 +12,11 @@ namespace Stands.Effects
             characterStatModifiersModifier.movementSpeed_mult *= 0.95f;
             ApplyModifiers();
         }
+
+        public void Reset()
+        {
+            ClearModifiers();
+            characterStatModifiersModifier.movementSpeed_mult = 1f;
+        }
     }
 }

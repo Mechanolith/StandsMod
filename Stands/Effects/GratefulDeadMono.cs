@@ -29,8 +29,19 @@ namespace Stands.Effects
             effect = gameObject.AddComponent<GratefulDeadEffectMono>();
             effectColor = gameObject.AddComponent<GratefulDeadColorMono>();
 
+            PlayerManager.instance.AddPlayerDiedAction(OnPlayerDied);
+
             var monos = GetComponentsInChildren<GratefulDeadEffectMono>();
             Stands.Debug($"[GratefulDead] Mono count: {monos.Length}");
+        }
+
+        void OnPlayerDied(Player _player, int _id)
+        {
+            if (_player == target)
+            {
+                effect.Reset();
+                effectColor.Reset();
+            }
         }
 
         void Update()

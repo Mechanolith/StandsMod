@@ -22,11 +22,21 @@ namespace Stands.Effects
         {
             if (isActive)
             {
-                SetColorMax(GetOriginalColorMax());
-                SetColorMin(GetOriginalColorMin());
-                ApplyColor();
-                isActive = false;
+                RemoveColorInternal();
             }
+        }
+
+        void RemoveColorInternal()
+        {
+            SetColorMax(GetOriginalColorMax());
+            SetColorMin(GetOriginalColorMin());
+            ApplyColor();
+            isActive = false;
+        }
+
+        public void Reset()
+        {
+            RemoveColorInternal();
         }
     }
 }
