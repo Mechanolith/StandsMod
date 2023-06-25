@@ -1,6 +1,7 @@
 ﻿using Stands.Utility;
 using UnboundLib.Cards;
 using UnityEngine;
+using Stands.Effects;
 
 
 namespace Stands.Cards

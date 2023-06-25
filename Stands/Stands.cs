@@ -38,11 +38,11 @@ namespace Stands
         }
         void Start()
         {
+            CustomCard.BuildCard<ArmourOff>();
+            CustomCard.BuildCard<ChariotTechnique>();
             CustomCard.BuildCard<Hamon>();
             CustomCard.BuildCard<SilverChariot>();
-            CustomCard.BuildCard<ChariotTechnique>();
             CustomCard.BuildCard<StarFinger>();
-            CustomCard.BuildCard<ArmourOff>();
             CustomCard.BuildCard<StoneMask>();
         }
 

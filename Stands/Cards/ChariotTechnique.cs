@@ -6,6 +6,7 @@ using System.Linq;
 using System.Reflection;
 using UnboundLib.Utils;
 using Stands.Utility;
+using Stands.Effects;
 
 namespace Stands.Cards
 {

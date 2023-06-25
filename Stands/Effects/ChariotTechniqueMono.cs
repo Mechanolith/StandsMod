@@ -9,7 +9,7 @@ using System.Reflection;
 using UnboundLib.Utils;
 using Object = UnityEngine.Object;
 
-namespace Stands.Cards
+namespace Stands.Effects
 {
     class ChariotTechniqueMono : MonoBehaviour
 	{

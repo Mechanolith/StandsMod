@@ -6,7 +6,7 @@ using UnboundLib.Cards;
 using UnboundLib;
 using ModdingUtils.MonoBehaviours;
 
-namespace Stands.Cards
+namespace Stands.Effects
 {
     class HamonMono : CounterReversibleEffect
     {
